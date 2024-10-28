@@ -25,3 +25,14 @@ def eliminarEnemigo(request, id):
     enemigo = Enemigo.objects.get(id = id)
     enemigo.delete()
     return redirect('/listarEnemigos')
+
+def actualizarEnemigo(request,id):
+    enemigo = Enemigo.objects.get(id = id)
+    form = FormEnemigo(instance=enemigo)
+    if request.method == 'POST':
+        form = FormEnemigo(request.POST, instance=enemigo)
+        if form.is_valid():
+            form.save()
+        return index(request)
+    data = {'form' : form}
+    return render(request, 'enemigosapp/agregarEnemigo.html', data)
