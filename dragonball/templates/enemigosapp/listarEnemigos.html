@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if enemigos %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Nivel de Poder</th>
+                <th>Asesinatos</th>
+                <th>Veces que ha Muerto</th>
+                <th>Raza</th>
+                <th>Organización</th>
+                <th>Planetas Destruidos</th>
+                <th>-</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enemigo in enemigos %}
+            <tr>
+                <td>{{ enemigo.id }}</td>
+                <td>{{ enemigo.nombre }}</td>
+                <td>{{ enemigo.nivel_de_poder }}</td>
+                <td>{{ enemigo.asesinatos }}</td>
+                <td>{{ enemigo.veces_que_ha_muerto }}</td>
+                <td>{{ enemigo.raza }}</td>
+                <td>{{ enemigo.organizacion }}</td>
+                <td>{{ enemigo.planetas_destruidos }}</td>
+                <td><a href="/eliminarEnemigo/{{ enemigo.id }}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No hay enemigos en la base de datos</p>
+    {% endif %}
+</body>
+</html>

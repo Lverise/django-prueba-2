@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from enemigosapp.views import ( index, listarEnemigos, agregarEnemigo, eliminarEnemigo,  )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index),
+    path('listarEnemigos/', listarEnemigos),
+    path('agregarEnemigo', agregarEnemigo),
+    path('eliminarEnemigo/<int:id>', eliminarEnemigo),
+
 ]
